@@ -5,7 +5,9 @@ const MemberContext = createContext();
 
 const MemberProvider = ({ children }) => {
     const [user,setUser] = useState();
+    const [members,setMembers] = useState([]);
     const history = useHistory();
+
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -18,7 +20,7 @@ const MemberProvider = ({ children }) => {
 
     return (
         <MemberContext.Provider
-        value={{user,setUser}}>
+        value={{user,setUser, members, setMembers}}>
         {children}
         </MemberContext.Provider>
   );
