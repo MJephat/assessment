@@ -6,6 +6,10 @@ const MemberContext = createContext();
 const MemberProvider = ({ children }) => {
     const [user,setUser] = useState();
     const [members,setMembers] = useState([]);
+    const [firstname, setFirstname] = useState();
+    const [lastname, setLastname] = useState();
+    const [id_number, setId_number] = useState();
+    const [date_of_birth, setDate_of_birth] = useState();
     const history = useHistory();
 
 
@@ -20,7 +24,7 @@ const MemberProvider = ({ children }) => {
 
     return (
         <MemberContext.Provider
-        value={{user,setUser, members, setMembers}}>
+        value={{user,setUser, members, setMembers, lastname,setLastname,firstname,setFirstname,date_of_birth,setDate_of_birth,id_number,setId_number}}>
         {children}
         </MemberContext.Provider>
   );

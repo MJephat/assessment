@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/layout';
+import { Box, Center } from '@chakra-ui/layout';
 import { Button, Tooltip, Text, Menu, MenuButton, Avatar, MenuList, useToast, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, Input, Spinner, MenuItem, Table, TableContainer, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, MenuDivider } from '@chakra-ui/react';
 import {BellIcon, ChevronDownIcon } from '@chakra-ui/icons';
 // import React, { useState } from 'react'
@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 import { Container } from "@chakra-ui/react";
 import skeleton from '../memberloading';
 import UserListmember from '../context/memberlist';
+import addMember from '../Authentication/memberin';
+
 
 const SideDrawer = ({fetchAgain}) => {
     // const [search, setSearch] = useState("")
@@ -25,6 +27,11 @@ const SideDrawer = ({fetchAgain}) => {
         localStorage.removeItem("userInfo");
         history.push("/");
     }
+
+    const memberPlus =()=>{
+        history.push("/newMember");
+    }
+
 
 
     // fetching members
@@ -95,7 +102,7 @@ const SideDrawer = ({fetchAgain}) => {
             </MenuButton>
 
             <MenuList>
-              <MenuItem>Add a Member</MenuItem>
+              <MenuItem onClick={memberPlus}>Add a Member</MenuItem>
               <MenuDivider />
               <MenuItem onClick={LogoutHandler}>Logout</MenuItem>
             </MenuList>
@@ -105,6 +112,11 @@ const SideDrawer = ({fetchAgain}) => {
 
       <Box>
         <Box>
+          <Center>
+            <Text fontSize="3xl" fontFamily="Work sans" color="black">
+              list of members
+            </Text>
+          </Center>
           {members.map((member) => (
             <Box
               display={"flex"}
