@@ -8,12 +8,14 @@ const getAllMembers = (req, res) => {
 };
 
 const createMember = (req, res) => {
-  const { name, email } = req.body;
+  const { firstname, lastname,date_of_birth, id_number} = req.body;
 
-  memberModel.createMember(name, email, (err, member) => {
-    if (err) return res.status(500).json({ message: "Error creating member" });
-    res.status(201).json(member);
-  });
+  memberModel.createMember(firstname,lastname,date_of_birth,id_number, (err, member) => {
+      if (err)
+        return res.status(500).json({ message: "Error creating member" });
+      res.status(201).json(member);
+    }
+  );
 };
 
 module.exports = { getAllMembers, createMember };
